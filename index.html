@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        ul{
+            float: left;
+            margin:  10px ;
+            padding:0;
+        }
+        ul li{
+            list-style: none;
+            display: inline-block;
+            border: 1px solid #999999;
+            background: #c7254e;
+            color: #FFFFFF;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+    </style>
+    <title>基础JavaScript练习（一）</title>
+</head>
+<body>
+    <div id="the_body">
+        <input id="num_input" type="text" >
+        <button id="left_in">左侧入</button>
+        <button id="right_in">右侧入</button>
+        <button id="left_out">左侧出</button>
+        <button id="right_out">右侧出</button>
+        <br>
+        <ul id="ul">
+            <li id="first">10</li>
+            <li>3</li>
+            <li>7</li>
+            <li>12</li>
+            <li>11</li>
+            <li>30</li>
+        </ul>
+    </div>
+
+<script>
+
+    var ul = document.getElementById('ul')
+    var list = ul.children;
+    /*console.log(list);*/
+   /* var val=parseInt(document.getElementById('num_input').value);     不可以用中间变量*/
+
+    var left_in=document.getElementById('left_in');
+    var right_in=document.getElementById('right_in');
+    var left_out=document.getElementById('left_out');
+    var right_out=document.getElementById('right_out');
+
+    left_in.onclick=function () {
+       var add=document.createElement('li');
+        add.innerHTML=parseInt(document.getElementById('num_input').value);
+        var first=list[0];
+        ul.insertBefore(add,first)
+    }
+    right_in.onclick=function () {
+        var add=document.createElement('li');
+        add.innerHTML=parseInt(document.getElementById('num_input').value);
+
+        ul.appendChild(add);
+    }
+    left_out.onclick=function () {
+        var less=list[0];
+        less.remove();
+    }
+    right_out.onclick=function () {
+        var less=list[list.length-1];
+        less.remove();
+    }
+
+</script>
+</body>
+</html>
